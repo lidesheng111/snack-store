@@ -1,0 +1,27 @@
+<view>
+    <swiper indicator-dots="true" autoplay="true" interval="5000">
+        <swiper-item wx:for="{{banner}}">
+            <image src="{{item.itemUrl}}" />
+        </swiper-item>
+    </swiper>
+
+    <view class='home-main'>
+        <view class='home-main-theme'>
+            <view class='section-header'>精选主题</view>
+            <view class='theme-box'>
+                <image wx:for='{{themes}}' class='themes-img' src='{{item.topicImgUrl}}' />
+            </view>
+        </view>
+    </view>
+
+    <view class='productsList-container'>
+        <view class='section-header'>最近新品</view>
+        <view class='productsList'>
+            <view class='model' wx:for='{{productsList}}'>
+                <image class='prod-img' src='{{item.imgUrl}}' mode="aspectFit"></image>
+                <view class='prod-name'>{{item.name}}</view>
+                <view class='prod-price'>{{item.price}} ￥</view>
+            </view>
+        </view>
+    </view>
+</view>
