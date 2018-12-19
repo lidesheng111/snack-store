@@ -28,6 +28,14 @@ Page({
             .catch(err => console.error(err));
     },
 
+    toTheme(e) {
+      let themeId = e.currentTarget.dataset.info[0];
+      let themeName = e.currentTarget.dataset.info[1]
+      wx.navigateTo({
+        url: '../theme/theme?id=' + themeId + '&name=' + themeName,
+      })
+    },
+
 
     onReady: function() {
     

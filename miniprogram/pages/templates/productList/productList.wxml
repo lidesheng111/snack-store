@@ -1,0 +1,9 @@
+<template name='products'>
+  <view class='productsList'>
+    <view class='model' wx:for='{{productsList}}' wx:key='this'>
+      <image class='prod-img' src='{{item.imgUrl}}' mode="aspectFit"></image>
+      <view class='prod-name'>{{item.name}}</view>
+      <view class='prod-price'>{{item.price}} ￥</view>
+    </view>
+  </view>
+</template>
