@@ -1,1 +1,7 @@
-/* pages/theme/theme.wxss */
+@import '../templates/productList/productList.wxss';
+
+.head-img {
+    width: 100%;
+    height: 400rpx;
+    margin-bottom: 30rpx;
+}

@@ -1,32 +1,49 @@
-// pages/theme/theme.js
-Page({
+import store from '../../store.js';
+import create from '../../utils/create.js';
 
-  /**
-   * 页面的初始数据
-   */
+const db = wx.cloud.database();
+
+create(store, {
   data: {
-
+      themedProducts: [],
+      headImg: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    console.log(options)
+        let themeId = Number(options.id);
+        let headImg = options.img;
+        let name = options.name;
+
+        wx.setNavigationBarTitle({ title: name });
+        this.setData({ headImg });
+        this._getTheme(themeId);
   },
 
+  _getTheme(id) {
+        db.collection('products').where({
+            themeId: id
+        }).get()
+        .then( res => {
+            console.log(res)
+            this.store.data.themedProducts = res.data;
+            this.update();
+        })
+        .catch( err => {
+            console.error(err)
+        })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+     
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      console.log(this.data)
   },
 
   /**

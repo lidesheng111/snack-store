@@ -1,3 +1,5 @@
+ <import src="../templates/productList/productList.wxml" />
+
 <view>
     <swiper indicator-dots="true" autoplay="true" interval="5000">
         <swiper-item wx:for="{{banner}}" wx:key='this'>
@@ -9,14 +11,13 @@
         <view class='home-main-theme'>
             <view class='section-header'>精选主题</view>
             <view class='theme-box'>
-                <image wx:for='{{themes}}' class='themes-img' src='{{item.topicImgUrl}}' wx:key='this' data-info='[{{item.id}}, {{item.name}}]' bindtap='toTheme' />
+                <image wx:for='{{themes}}' class='themes-img' src='{{item.topicImgUrl}}' wx:key='this' data-info="{{item.id}}, {{item.headImgUrl}}, {{item.name}}" bindtap='toTheme' />
             </view>    
         </view>
     </view>
 
     <view class='productsList-container'>
         <view class='section-header'>最近新品</view>
-        <import src="../templates/productList/productList.wxml" />
         <template is="products" data='{{productsList}}'></template>
     </view>
 </view>

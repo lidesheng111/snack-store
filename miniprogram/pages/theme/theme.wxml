@@ -1,2 +1,6 @@
-<!--pages/theme/theme.wxml-->
-<text>pages/theme/theme.wxml</text>
+<import src="../templates/productList/productList.wxml" />
+
+<view>
+    <image class='head-img' src='{{headImg}}' />
+    <template is="products" data='{{productsList: themedProducts}}'></template>
+</view>
