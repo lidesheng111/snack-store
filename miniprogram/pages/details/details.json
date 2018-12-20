@@ -1,1 +1,5 @@
-{}
+{
+    "usingComponents": {
+        "for": "../../components/ForLoop/ForLoop"
+    }
+}

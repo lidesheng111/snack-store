@@ -10,13 +10,11 @@ create(store, {
     id: null,
     array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     index: 0,
-    swiperIndex: 0,
+    swiperIndex: null,
   },
 
   onLoad: function (options) {
-    this.setData({
-      id: options._id
-    })
+    this.setData({ id: options._id });
   },
 
   onNewVlue(e) {
@@ -29,10 +27,18 @@ create(store, {
     this.update();
   },
 
+    // onSetSource() {
+    //     let source = this.store.data.prodDetails.detailsProps;
+    //     this.store.data.source = source;
+    //     this.update();
+    // },
+
   onReady: function () {
     db.collection('products').where({ _id: this.data.id }).get()
       .then(res => {
         this.store.data.prodDetails = res.data[0];
+        // let source = res.data[0].detailsProps;
+        // this.store.data.source = source;
         this.update();
       })
       .catch(err => console.log(err));
@@ -67,7 +73,7 @@ create(store, {
   },
 
   onShow: function () {
-    console.log(this.data)
+      console.log(this.store.data)
   },
 
   onHide: function () {

@@ -2,7 +2,7 @@ export default {
     data: {
         banner: [],
         themes: [],
-        productsList: [],
+        productsList: null,
 
         themedProducts: [],
 
@@ -11,8 +11,4 @@ export default {
     },
 
     globalData: [],
-
-    logMotto: function() {
-        console.log(this.data.motto)
-    }
 }    

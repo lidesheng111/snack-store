@@ -1,9 +1,11 @@
 page {
   background-color: #f3f3f3;
+  font-family: 'Microsoft Yahei';
 }
 .upper-box, .bottom-box {
   background-color: white;
 }
+
 /* 页面最上固定购物车图标 */
 .fixed-cart {
   width: 60rpx;
@@ -11,10 +13,12 @@ page {
   top: 50rpx;
   right: 30rpx;
 }
+
 /* 商品图片 */
 .topic-img {
   width: 100%;
 }
+
 /* 添加栏 */
 .cart-box {
   height: 100rpx;
@@ -36,10 +40,10 @@ page {
       .box-cart {
         width: 35rpx;
       }
+
 /* 商品信息 */
 .prod-info-box {
   text-align: center;
-  font-family: 'Microsoft Yahei';
   margin: 50rpx 0;
 }
     .prod-info-box view {
@@ -50,16 +54,24 @@ page {
     }
     .prod-info-box view:last-child {
       font-size: 36rpx;
-    }        
+    }
+
 /* 商品详情 */
 .bottom-box {
   margin-top: 30rpx;
   font-size: 32rpx;
-  font-family: 'Microsoft Yahei';
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 100rpx;
   opacity: 0.8;
   border-bottom: 1rpx solid black;
+}
+
+swiper {
+    font-size: 30rpx;
+}
+.prod-imgs-box image {
+  width: 100%;
+  display:block;
 }

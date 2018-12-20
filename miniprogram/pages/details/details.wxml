@@ -27,8 +27,15 @@
     <view data-index='1' bindtap='onChangeSwiper'>产品参数</view>
     <view data-index='2' bindtap='onChangeSwiper'>售后保障</view>
 </view>
-<swiper current="{{swiperIndex}}" class='swiper' style="height:600px;" duration="300">
-  <swiper-item><view class='prod-imgs' wx:for='{{prodDetails.detailsImg}}'><image src='{{item}}' /></view></swiper-item> 
-  <swiper-item><view class='prod-props'>产品参数</view></swiper-item>
+<swiper current="{{swiperIndex}}" style="height: {{swiperIndex == 0 ? '5200rpx' : '400rpx' }}">
+  <swiper-item class='prod-imgs-box'>
+    <image  wx:for='{{prodDetails.detailsImg}}' wx:key='*this' src='{{item}}' mode='widthFix'/>
+  </swiper-item> 
+
+  <swiper-item class='prod-props'>
+    <!-- <view wx:for='{{prodDetails.detailsProps}}' wx:key='*this'>{{item}}</view> -->
+    <for source="{{prodDetails.detailsProps}}"></for>
+  </swiper-item>
+
   <swiper-item><view class='prod-service'>售后保障</view></swiper-item>  
 </swiper>

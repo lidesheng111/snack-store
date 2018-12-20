@@ -20,11 +20,8 @@ create(store, {
   },
 
   _getTheme(id) {
-        db.collection('products').where({
-            themeId: id
-        }).get()
+        db.collection('products').where({ themeId: id }).get()
         .then( res => {
-            console.log(res)
             this.store.data.themedProducts = res.data;
             this.update();
         })

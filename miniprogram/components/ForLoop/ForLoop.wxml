@@ -1,0 +1,2 @@
+<!--ForLoop.wxml-->
+<text>{{source['品名']}}</text>
