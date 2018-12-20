@@ -1,65 +1,91 @@
-// pages/details/details.js
-Page({
+import store from '../../store.js';
+import create from '../../utils/create.js';
 
-  /**
-   * 页面的初始数据
-   */
+const db = wx.cloud.database();
+
+create(store, {
+
   data: {
-
+    prodDetails: null,
+    id: null,
+    array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    index: 0,
+    swiperIndex: 0,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    console.log(options);
+    this.setData({
+      id: options._id
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  onNewVlue(e) {
+    this.setData({ index: e.detail.value });
+  },
+
+  onChangeSwiper(e) {
+    let index = e.currentTarget.dataset.index;
+    this.store.data.swiperIndex = index;
+    this.update();
+  },
+
   onReady: function () {
+    db.collection('products').where({ _id: this.data.id }).get()
+      .then(res => {
+        this.store.data.prodDetails = res.data[0];
+        this.update();
+      })
+      .catch(err => console.log(err));
+    // db.collection('products').doc('XBknE8DR1TiN8L14').update({
+    //   data: {
+    //     detailsImg: [
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-1@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-2@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-3@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-4@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-5@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-6@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-7@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-8@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-9@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-10@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-11@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-12@1-dryfruit.png',
+    //       'https://zeg-1256857292.cos.ap-chengdu.myqcloud.com/detail-13@1-dryfruit.png',
+    //     ],
+    //     detailsProps: {
+    //       '品名': '杨梅', 
+    //       '口味': ['青梅味', '雪梨味', '黄桃味', '菠萝味'], 
+    //       '产地': '火星', 
+    //       '保质期': '180天' 
+    //     }
+    //   },
 
+    // success: res => console.log(res),
+    // fail: err => console.error(err)
+    // })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    console.log(this.data)
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   }

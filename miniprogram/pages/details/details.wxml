@@ -1,2 +1,34 @@
-<!--pages/details/details.wxml-->
-<text>pages/details/details.wxml</text>
+<view class='upper-box'>
+  <view class='detail-header-box'>
+    <image class='fixed-cart' src='/images/icon/cart@top.png' mode='widthFix' />
+    <image class='topic-img' src='{{prodDetails.imgUrl}}' mode='widthFix' />
+
+    <view class='cart-box'>
+      <text>数量</text>
+      <picker bindchange="onNewVlue" value="{{index}}" range="{{array}}">
+        <view class="picker">{{array[index]}}</view>
+      </picker>
+      <image class='picker-arrow' src='/images/icon/arrow@down.png' mode='widthFix' />
+      <view class='vertical-dots'>......</view>
+      <text>加入购物车</text>
+      <image class='box-cart' src='/images/icon/cart.png' mode='widthFix'/>
+    </view>
+
+    <view class='prod-info-box'>
+      <view>{{prodDetails.stock === 0 ? '补货中' : '有货'}}</view>
+      <view>{{prodDetails.name}}</view>
+      <view>￥{{prodDetails.price}}</view>
+    </view>
+  </view>
+</view>
+
+<view class='bottom-box'>
+    <view data-index='0' bindtap='onChangeSwiper'>商品详情</view>
+    <view data-index='1' bindtap='onChangeSwiper'>产品参数</view>
+    <view data-index='2' bindtap='onChangeSwiper'>售后保障</view>
+</view>
+<swiper current="{{swiperIndex}}" class='swiper' style="height:600px;" duration="300">
+  <swiper-item><view class='prod-imgs' wx:for='{{prodDetails.detailsImg}}'><image src='{{item}}' /></view></swiper-item> 
+  <swiper-item><view class='prod-props'>产品参数</view></swiper-item>
+  <swiper-item><view class='prod-service'>售后保障</view></swiper-item>  
+</swiper>

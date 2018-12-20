@@ -4,7 +4,10 @@ export default {
         themes: [],
         productsList: [],
 
-        themedProducts: []
+        themedProducts: [],
+
+        prodDetails: null,
+        swiperIndex: 0,
     },
 
     globalData: [],
